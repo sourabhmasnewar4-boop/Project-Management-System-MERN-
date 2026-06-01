@@ -7,6 +7,7 @@ const Notification = require('./models/Notification');
 const File = require('./models/File');
 require('dotenv').config();
 
+// Prioritize the exact key expected from your env setup
 const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/medinex_pm';
 
 const seedDatabase = async () => {
@@ -15,7 +16,7 @@ const seedDatabase = async () => {
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB for seeding.');
 
-    // Clear existing collections
+    // Clear existing collections to avoid duplicate entry constraints
     await User.deleteMany({});
     await Project.deleteMany({});
     await Task.deleteMany({});
@@ -24,7 +25,7 @@ const seedDatabase = async () => {
     await File.deleteMany({});
     console.log('Cleared existing data.');
 
-    // 1. Create Users (passwords will be hashed by Mongoose pre-save)
+    // 1. Create Users (passwords will be automatically hashed by Mongoose pre-save)
     const users = await User.create([
       {
         name: 'Admin Medinex',
@@ -197,10 +198,11 @@ const seedDatabase = async () => {
     console.log('Seeded initial notifications.');
 
     console.log('Database seeding completed successfully!');
-    mongoose.disconnect();
+    await mongoose.disconnect();
+    process.exit(0);
   } catch (error) {
     console.error('Error seeding database:', error);
-    mongoose.disconnect();
+    await mongoose.disconnect();
     process.exit(1);
   }
 };
