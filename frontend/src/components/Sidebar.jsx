@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import {
-  LayoutDashboard, FolderKanban, CheckSquare, Trello,
+  LayoutDashboard, FolderKanban, CheckSquare, Columns,
   Users, Calendar, Bell, User, Settings, ChevronLeft, ChevronRight, Zap
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -10,7 +10,7 @@ const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/projects', icon: FolderKanban, label: 'Projects' },
   { to: '/tasks', icon: CheckSquare, label: 'Tasks' },
-  { to: '/kanban', icon: Trello, label: 'Kanban Board' },
+  { to: '/kanban', icon: Columns, label: 'Kanban Board' },
   { to: '/team', icon: Users, label: 'Team' },
   { to: '/calendar', icon: Calendar, label: 'Calendar' },
   { to: '/notifications', icon: Bell, label: 'Notifications', badge: true },

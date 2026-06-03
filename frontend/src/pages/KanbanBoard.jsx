@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import { Trello, GripVertical, Circle, Clock, ArrowRight, FolderKanban } from 'lucide-react';
+import { Columns, GripVertical, Circle, Clock, ArrowRight, FolderKanban } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { format, isPast } from 'date-fns';
 import api from '../utils/api';
@@ -110,7 +110,7 @@ const KanbanBoard = () => {
     <div className="space-y-4 h-full flex flex-col">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="page-title flex items-center gap-2"><Trello size={24} /> Kanban Board</h1>
+          <h1 className="page-title flex items-center gap-2"><Columns size={24} /> Kanban Board</h1>
           <p className="text-surface-500 mt-1">Drag and drop tasks between columns</p>
         </div>
         <div className="flex items-center gap-2">
